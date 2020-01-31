@@ -34,8 +34,8 @@ public class Controll : MonoBehaviour
     [SerializeField]
     private Controllerbuttom[] mycontroller;
     private Camera mycamera;
-    private Player firstplayer;
-    private Player lastplayer;
+    private GameObject firstplayer;
+    private GameObject lastplayer;
 
     // Start is called before the first frame update
     void Awake()
@@ -49,6 +49,7 @@ public class Controll : MonoBehaviour
                 playerins.num = playersnum;
                 findplayers = new GameObject[playersnum];
                 mycamera = this.GetComponent<Camera>();
+                Debug.Log(mycamera);
                 for (int i = 0; i < playersnum; i++)
                 {
                     Resbornplayer(i);
@@ -80,7 +81,10 @@ public class Controll : MonoBehaviour
     void Update()
     {
         if (camerafollow)
+        {
+            Findthefirst();
             CameraFollow();
+        }
     }
 
     void Resbornplayer(int c)
@@ -108,13 +112,21 @@ public class Controll : MonoBehaviour
 
         if (playersnum > 1)
         {
-
-
+           
+            this.transform.position = new Vector3((firstplayer.transform.position.x + lastplayer.transform.position.x) /2, (firstplayer.transform.position.y + lastplayer.transform.position.y) /2,transform.position.z);
+            Debug.Log("I'm moving");
 
 
 
 
         }
+    }
+
+    void Findthefirst()
+    {
+        firstplayer = findplayers[0];
+        lastplayer = findplayers[1];
+
     }
 
 }

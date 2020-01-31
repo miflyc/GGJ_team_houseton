@@ -181,13 +181,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5917b0360d3f0ed4bb9f48abffa4ba7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camerafollow: 0
+  camerafollow: 1
   controller: 0
   isrigidbody: 0
-  players: []
-  speed: 0
-  playerins: {fileID: 0}
-  mycontroller: []
+  players:
+  - {fileID: 1141860419877360248, guid: c9ad4f1d77264334db9e7d9c278360fb, type: 3}
+  - {fileID: 1141860419877360248, guid: c9ad4f1d77264334db9e7d9c278360fb, type: 3}
+  speed: 2
+  playerins: {fileID: 1739676811}
+  mycontroller:
+  - up: W
+    left: A
+    right: D
+    down: S
+  - up: I
+    left: J
+    right: L
+    down: K
 --- !u!81 &762377155
 AudioListener:
   m_ObjectHideFlags: 0
@@ -312,7 +322,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb717d3e871807f4798cfff1f9b02082, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: []
+  position:
+  - {fileID: 1034862166}
+  - {fileID: 175154823}
   num: 0
   up: 
   down: 
