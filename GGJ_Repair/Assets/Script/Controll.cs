@@ -18,6 +18,12 @@ public class Controll : MonoBehaviour
     [SerializeField] private float speed;
     public PlayerIns playerins;
     private GameObject[] findplayers;
+    public float scale;
+    public float maxscale;
+    [Header("input the maxcamera position x")]
+    public float thecamerax;
+    [Header("input the maxcamera position y")]
+    public float thecameray;
     private int playersnum;
     [Serializable]
     public class Controllerbuttom
@@ -36,6 +42,9 @@ public class Controll : MonoBehaviour
     private Camera mycamera;
     private GameObject firstplayer;
     private GameObject lastplayer;
+    private float distance;
+    private Vector3 mainpoint;
+    private bool outtheplace;
 
     // Start is called before the first frame update
     void Awake()
@@ -43,13 +52,14 @@ public class Controll : MonoBehaviour
 
         if (players.Length != 0)
         {
+            outtheplace = false;
             if (mycontroller.Length == players.Length)
             {
                 playersnum = players.Length;
                 playerins.num = playersnum;
                 findplayers = new GameObject[playersnum];
                 mycamera = this.GetComponent<Camera>();
-                Debug.Log(mycamera);
+              //  Debug.Log(mycamera);
                 for (int i = 0; i < playersnum; i++)
                 {
                     Resbornplayer(i);
@@ -93,7 +103,7 @@ public class Controll : MonoBehaviour
         if (players[c].GetComponent<Player>() != null)
         {
             playerins.up = mycontroller[c].up;
-            Debug.Log("" + playerins.up);
+           // Debug.Log("" + playerins.up);
             playerins.down = mycontroller[c].down;
             playerins.left = mycontroller[c].left;
             playerins.right = mycontroller[c].right;
@@ -107,18 +117,24 @@ public class Controll : MonoBehaviour
         if (playersnum == 1)
         {
             this.transform.position = new Vector3(findplayers[0].transform.position.x, findplayers[0].transform.position.y, transform.position.z);
-            Debug.Log("I'm following" + FindObjectOfType<Player>().gameObject.transform.position);
+           // Debug.Log("I'm following" + FindObjectOfType<Player>().gameObject.transform.position);
         }
 
         if (playersnum > 1)
         {
-           
-            this.transform.position = new Vector3((firstplayer.transform.position.x + lastplayer.transform.position.x) /2, (firstplayer.transform.position.y + lastplayer.transform.position.y) /2,transform.position.z);
-            Debug.Log("I'm moving");
-
-
-
-
+            mainpoint = new Vector3((firstplayer.transform.position.x + lastplayer.transform.position.x) / 2, (firstplayer.transform.position.y + lastplayer.transform.position.y) / 2, transform.position.z);
+            Isout();
+            if (!outtheplace)
+            {
+                distance = Vector3.Distance(firstplayer.transform.position, lastplayer.transform.position);
+                mycamera.orthographicSize = distance * scale;
+                if (mycamera.orthographicSize >= maxscale)
+                    mycamera.orthographicSize = maxscale;
+                this.transform.position = mainpoint;
+                // Debug.Log("I'm moving");
+            }
+            else
+               Debug.Log("out");
         }
     }
 
@@ -127,6 +143,21 @@ public class Controll : MonoBehaviour
         firstplayer = findplayers[0];
         lastplayer = findplayers[1];
 
+    }
+
+    void Isout()
+    {
+
+        if (thecamerax > Mathf.Abs(mainpoint.x) && thecameray > Mathf.Abs(mainpoint.y))
+        {
+           
+            outtheplace = false;
+        }
+        else
+        {
+            
+            outtheplace = true;
+        }
     }
 
 }

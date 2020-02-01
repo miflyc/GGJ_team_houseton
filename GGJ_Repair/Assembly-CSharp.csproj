@@ -62,9 +62,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\Audio.cs" />
     <Compile Include="Assets\Script\Controll.cs" />
     <Compile Include="Assets\Script\Player.cs" />
     <Compile Include="Assets\Script\PlayerIns.cs" />
+    <Compile Include="Assets\Script\test.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>F:/ggj/ggj-1/GGJ_team_houseton/GGJ_Repair/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
