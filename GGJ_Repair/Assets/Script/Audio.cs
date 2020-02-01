@@ -9,11 +9,7 @@ public class Audio : MonoBehaviour
     public double startposition;
     private float looptime;
     private int countdown;
-    private bool isloop
-    {
-        get { return isloop; }
-        set { isloop = value; }
-    }
+    public bool isloop;
     
     // Start is called before the first frame update
     void Start()
@@ -21,7 +17,7 @@ public class Audio : MonoBehaviour
         countdown = 0;
         isloop = false;
         audio1 = GetComponent<AudioSource>();
-        audio1.Play();
+       // audio1.Play();
         
     }
 
@@ -36,6 +32,7 @@ public class Audio : MonoBehaviour
         if (!isloop)
         {
             StopAllCoroutines();
+            audio1.Stop();
             countdown = 0;
         }
     }
@@ -43,6 +40,8 @@ public class Audio : MonoBehaviour
 
     IEnumerator forfirsttime()
     {
+        audio1.Play();
+        Debug.Log(audio1.clip.length);
         yield return new WaitForSeconds(audio1.clip.length);
         audio1.PlayScheduled(startposition);
         StartCoroutine(forloop());
@@ -56,8 +55,9 @@ public class Audio : MonoBehaviour
         {
             yield return new WaitForSeconds(looptime);
             audio1.PlayScheduled(startposition);
+            Debug.Log(AudioSettings.dspTime);
         }
-        while (true);
+        while (isloop);
 
         
     }

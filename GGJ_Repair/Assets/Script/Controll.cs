@@ -17,7 +17,11 @@ public class Controll : MonoBehaviour
     [Header("please type in the speed of player (float)")]
     [SerializeField] private float speed;
     public PlayerIns playerins;
+    [Header("how smooth the movement be")]
+    public float smooth;
     private GameObject[] findplayers;
+    private int[] playerpoint;
+    private int[] playerrank;
     public float scale;
     public float maxscale;
     [Header("input the maxcamera position x")]
@@ -45,11 +49,17 @@ public class Controll : MonoBehaviour
     private float distance;
     private Vector3 mainpoint;
     private bool outtheplace;
+    private Manager manager;
+    [SerializeField]
+    [Header("Set the timer of the game(seconds)")]
+    private float time;
 
     // Start is called before the first frame update
     void Awake()
     {
-
+        playerpoint = new int[playersnum];
+        manager = GameObject.FindGameObjectWithTag("LevelManagement").GetComponent<Manager>();
+        StartCoroutine(timer());
         if (players.Length != 0)
         {
             outtheplace = false;
@@ -68,8 +78,9 @@ public class Controll : MonoBehaviour
             else
                 Debug.LogError("Please keep the players' number and the controllers' number same");
         }//pass the number of player and resborn players
-
+        
     }
+
     private void Start()
     {
         if (playersnum != 0)
@@ -109,7 +120,7 @@ public class Controll : MonoBehaviour
             playerins.right = mycontroller[c].right;
             playerins.PInstantiate(players[c], c, speed);
         }
-    }
+    }//resborn
 
     void CameraFollow()
     {
@@ -127,28 +138,28 @@ public class Controll : MonoBehaviour
             if (!outtheplace)
             {
                 distance = Vector3.Distance(firstplayer.transform.position, lastplayer.transform.position);
-                mycamera.orthographicSize = distance * scale;
+                mycamera.orthographicSize = Mathf.Lerp(mycamera.orthographicSize,distance*scale,smooth);
                 if (mycamera.orthographicSize >= maxscale)
                     mycamera.orthographicSize = maxscale;
-                this.transform.position = mainpoint;
+                this.transform.position = Vector3.Lerp(transform.position,mainpoint,Time.deltaTime*smooth);
                 // Debug.Log("I'm moving");
             }
             else
                Debug.Log("out");
         }
-    }
+    }//camera follow;
 
     void Findthefirst()
     {
         firstplayer = findplayers[0];
         lastplayer = findplayers[1];
 
-    }
+    }//wait for the find the first
 
     void Isout()
     {
 
-        if (thecamerax > Mathf.Abs(mainpoint.x) && thecameray > Mathf.Abs(mainpoint.y))
+        if (thecamerax > Mathf.Abs(transform.position.x) && thecameray > Mathf.Abs(transform.position.y))
         {
            
             outtheplace = false;
@@ -158,6 +169,25 @@ public class Controll : MonoBehaviour
             
             outtheplace = true;
         }
+    }//detect the bounce
+
+    IEnumerator timer()
+    {
+        yield return new WaitForSeconds(time);
+
+        Debug.Log("play the UI of result");
+        Time.timeScale = 0;
+
+    }//timer system
+
+    void CountthePoint()
+    {
+        for (int f = 0; f < playersnum; f++)
+        {
+            playerpoint[f] = findplayers[f].GetComponent<Player>().point;
+            playerrank[f] = findplayers[f].GetComponent<Player>().rank;
+        }
+        
     }
 
 }
