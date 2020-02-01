@@ -34,14 +34,14 @@ public class Controll : MonoBehaviour
     [Serializable]
     public class Controllerbuttom
     {
-        [Header("up(Keyboard)")]
-        public string up;
-        [Header("left(Keyboard)")]
-        public string left;
-        [Header("right(Keyboard)")]
-        public string right;
-        [Header("down(Keyboard)")]
-        public string down;
+        [Header("up and down(Controller)")]
+        public string hirozical;
+        [Header("left and right(Controller)")]
+        public string vertical;
+        [Header("accellor (Controller)")]
+        public string acc;
+        [Header("break(Controller)")]
+        public string mbreak;
     }
     [SerializeField]
     private Controllerbuttom[] mycontroller;
@@ -56,15 +56,21 @@ public class Controll : MonoBehaviour
     [Header("Set the timer of the game(seconds)")]
     private float time;
     private LevelManager mylv;
+    public float forwaittime;
+    public AudioSource opaudio;
+    private AudioSource myaudio;
+    public AudioClip[] audioClips;
 
 
     // Start is called before the first frame update
     void Awake()
     {
+        myaudio = GetComponent<AudioSource>();
         mylv = GetComponent<LevelManager>();
         playerpoint = new int[playersnum];
         manager = GameObject.FindGameObjectWithTag("LevelManagement").GetComponent<Manager>();
-        StartCoroutine(timer());
+        // StartCoroutine(timer());
+        
         if (players.Length != 0)
         {
             outtheplace = false;
@@ -84,6 +90,7 @@ public class Controll : MonoBehaviour
                 Debug.LogError("Please keep the players' number and the controllers' number same");
         }//pass the number of player and resborn players
         
+
     }
 
     private void Start()
@@ -100,6 +107,7 @@ public class Controll : MonoBehaviour
                 {
                     findplayers[d] = GameObject.FindGameObjectWithTag("Player" + (d + 1));
                 }
+            Audiologic();
         }//find and store players
 
     }
@@ -118,11 +126,11 @@ public class Controll : MonoBehaviour
         //Debug.Log(players[c].GetComponent<Player>());
         if (players[c].GetComponent<Player>() != null)
         {
-            playerins.up = mycontroller[c].up;
+            playerins.hirozical = mycontroller[c].hirozical;
            // Debug.Log("" + playerins.up);
-            playerins.down = mycontroller[c].down;
-            playerins.left = mycontroller[c].left;
-            playerins.right = mycontroller[c].right;
+            playerins.vertical = mycontroller[c].vertical;
+            playerins.acc = mycontroller[c].acc;
+            playerins.mbreak = mycontroller[c].mbreak;
             playerins.PInstantiate(players[c], c, speed);
         }
     }//resborn
@@ -146,6 +154,7 @@ public class Controll : MonoBehaviour
                 mycamera.orthographicSize = Mathf.Lerp(mycamera.orthographicSize,distance*scale,smooth);
                 if (mycamera.orthographicSize >= maxscale)
                     mycamera.orthographicSize = maxscale;
+
                 if (mycamera.orthographicSize <= minscale)
                     mycamera.orthographicSize = minscale;
                 this.transform.position = Vector3.Lerp(transform.position,mainpoint,Time.deltaTime*smooth);
@@ -180,10 +189,18 @@ public class Controll : MonoBehaviour
 
     IEnumerator timer()
     {
-        yield return new WaitForSeconds(time);
 
+        yield return new WaitForSeconds(3.35f);
+        Debug.Log("i'm here");
+        opaudio.Stop();
         Debug.Log("play the UI of result");
-        Time.timeScale = 0;
+        for (int u = 0; u < playersnum; u++)
+        {
+            findplayers[u].GetComponent<Player>().speed = speed;
+        }
+        //myaudio.clip = audioClips[0];
+        //myaudio.loop = true;
+        //myaudio.Play();
 
     }//timer system
 
@@ -191,10 +208,25 @@ public class Controll : MonoBehaviour
     {
         for (int f = 0; f < playersnum; f++)
         {
+
             playerpoint[f] = findplayers[f].GetComponent<Player>().point;
             playerrank[f] = findplayers[f].GetComponent<Player>().rank;
+
         }
         
     }
 
+    void Audiologic()
+    {
+        for (int u = 0; u < playersnum; u++)
+        {
+            findplayers[u].GetComponent<Player>().speed = 0;
+        }
+        opaudio.loop = false;
+        opaudio.Play();
+        myaudio.loop = false;
+        myaudio.Play();
+        StartCoroutine(timer());  
+    }
+    
 }

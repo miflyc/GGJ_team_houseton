@@ -65,6 +65,7 @@
     <Compile Include="Assets\Script\Audio.cs" />
     <Compile Include="Assets\Script\Checkpoint.cs" />
     <Compile Include="Assets\Script\Controll.cs" />
+    <Compile Include="Assets\Script\Item.cs" />
     <Compile Include="Assets\Script\LevelManager.cs" />
     <Compile Include="Assets\Script\Player.cs" />
     <Compile Include="Assets\Script\PlayerIns.cs" />

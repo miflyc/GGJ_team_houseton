@@ -9,13 +9,13 @@ public class PlayerIns : MonoBehaviour
     [HideInInspector]
     public int num;
     [HideInInspector]
-    public string up;
+    public string hirozical;
     [HideInInspector]
-    public string down;
+    public string vertical;
     [HideInInspector]
-    public string left;
+    public string acc;
     [HideInInspector]
-    public string right;
+    public string mbreak;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,10 +37,10 @@ public class PlayerIns : MonoBehaviour
                 Debug.Log("please keep the number the same with players");
             else
             {
-                playerIn.Dup = (KeyCode)System.Enum.Parse(typeof(KeyCode), up);
-                playerIn.Ddown = (KeyCode)System.Enum.Parse(typeof(KeyCode), down);
-                playerIn.Dright = (KeyCode)System.Enum.Parse(typeof(KeyCode), right);
-                playerIn.Dleft = (KeyCode)System.Enum.Parse(typeof(KeyCode), left);
+                playerIn.DHirozical = hirozical;
+                playerIn.Dvertical = vertical;
+                playerIn.Dacc = acc;
+                playerIn.Dbreak = mbreak;
                 playerIn.speed = speed;
                 playerIn.gameObject.tag = "Player" + (b + 1);
                 Instantiate(playerIn, position[b]);
