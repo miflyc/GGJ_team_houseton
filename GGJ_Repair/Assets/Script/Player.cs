@@ -30,24 +30,25 @@ public class Player : MonoBehaviour
 
     void Move()
     {
-        //  if (Input.GetKey(Dup)) //up
-       //  { 
-       //       Debug.Log("up" + Dup);
-       //       transform.position = new Vector3(transform.position.x, transform.position.y + speed*Time.deltaTime, transform.position.z);
-        //  }
-        //  if (Input.GetKey(Ddown)) //down
-          //    transform.position = new Vector3(transform.position.x, transform.position.y - speed*Time.deltaTime, transform.position.z);
-         //  if (Input.GetKey(Dleft)) //left
-        //      transform.position = new Vector3(transform.position.x - speed*Time.deltaTime, transform.position.y, transform.position.z);
-         // if (Input.GetKey(Dright))
-        //      transform.position = new Vector3(transform.position.x + speed*Time.deltaTime, transform.position.y, transform.position.z);//right
+          if (Input.GetKey(Dup)) //up
+         { 
+              Debug.Log("up" + Dup);
+              transform.position = new Vector3(transform.position.x, transform.position.y + speed*Time.deltaTime, transform.position.z);
+          }
+          if (Input.GetKey(Ddown)) //down
+             transform.position = new Vector3(transform.position.x, transform.position.y - speed*Time.deltaTime, transform.position.z);
+           if (Input.GetKey(Dleft)) //left
+              transform.position = new Vector3(transform.position.x - speed*Time.deltaTime, transform.position.y, transform.position.z);
+          if (Input.GetKey(Dright))
+              transform.position = new Vector3(transform.position.x + speed*Time.deltaTime, transform.position.y, transform.position.z);//right
        // Skill();
-       float translationx = Input.GetAxis("Move1X") * speed;
-        Debug.Log(Input.GetAxis("Move1X"));
-       float translationy = Input.GetAxis("Move1Y") * speed;
-        translationx *= Time.deltaTime;
-        translationy *= Time.deltaTime;
-        transform.position = new Vector3(translationx, translationy, transform.position.z);
+       //float translationx = Input.GetAxis("MoveX1") * speed;
+       // Debug.Log(Input.GetAxis("MoveX1"));
+      // float translationy = Input.GetAxis("MoveY1") * speed;
+        //Debug.Log(Input.GetAxis("MoveY1"));
+       // translationx *= Time.deltaTime;
+       // translationy *= Time.deltaTime;
+       // transform.position = new Vector3(transform.position.x +  translationx,transform.position.y- translationy, transform.position.z);
     }
 
 

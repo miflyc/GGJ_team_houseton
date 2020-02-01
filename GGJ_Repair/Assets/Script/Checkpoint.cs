@@ -5,21 +5,22 @@ using UnityEngine;
 public class Checkpoint : MonoBehaviour
 {
     // Start is called before the first frame update
-    private Controll controll;
+    private LevelManager lm;
     void Start()
     {
-        controll = GameObject.FindGameObjectWithTag("LM").GetComponent<Controll>();
+        lm = GetComponent<LevelManager>();
     }
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            //controll.Position();
-        }
-    }
+
             // Update is called once per frame
             void Update()
     {
         
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Player1" || other.gameObject.tag == "Player2" || other.gameObject.tag == "Player3" || other.gameObject.tag == "Player4")
+        {
+            lm.Position(other);
+        }
     }
 }

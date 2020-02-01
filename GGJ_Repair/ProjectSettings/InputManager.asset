@@ -6,39 +6,39 @@ InputManager:
   serializedVersion: 2
   m_Axes:
   - serializedVersion: 3
-    m_Name: Move1X
+    m_Name: MoveX1
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: 
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 100
-    dead: 0.03
-    sensitivity: 100
+    gravity: 1
+    dead: 0
+    sensitivity: 1
     snap: 0
     invert: 0
     type: 2
     axis: 0
     joyNum: 1
   - serializedVersion: 3
-    m_Name: Move1Y
+    m_Name: MoveY1
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: 
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 3
-    dead: 0.03
-    sensitivity: 3
+    gravity: 1
+    dead: 0
+    sensitivity: 1
     snap: 0
     invert: 0
     type: 2
     axis: 1
     joyNum: 1
   - serializedVersion: 3
-    m_Name: Move2X
+    m_Name: MoveX2
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -54,7 +54,7 @@ InputManager:
     axis: 0
     joyNum: 2
   - serializedVersion: 3
-    m_Name: Move2Y
+    m_Name: MoveY2
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -70,7 +70,7 @@ InputManager:
     axis: 1
     joyNum: 2
   - serializedVersion: 3
-    m_Name: Move3X
+    m_Name: MoveX3
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -86,7 +86,7 @@ InputManager:
     axis: 0
     joyNum: 3
   - serializedVersion: 3
-    m_Name: Move3Y
+    m_Name: MoveY3
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -102,7 +102,7 @@ InputManager:
     axis: 1
     joyNum: 3
   - serializedVersion: 3
-    m_Name: Move4X
+    m_Name: MoveX4
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -118,7 +118,7 @@ InputManager:
     axis: 0
     joyNum: 4
   - serializedVersion: 3
-    m_Name: Move4Y
+    m_Name: MoveY4
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
