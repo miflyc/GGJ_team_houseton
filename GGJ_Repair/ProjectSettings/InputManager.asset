@@ -138,12 +138,12 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: 
+    positiveButton: joystick 1 button 1
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 3
-    dead: 0.3
-    sensitivity: 3
+    gravity: 1
+    dead: 0.25
+    sensitivity: 1
     snap: 0
     invert: 0
     type: 2
@@ -154,7 +154,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: 
+    positiveButton: joystick 2 button 1
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
@@ -170,7 +170,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: 
+    positiveButton: joystick 3 button 1
     altNegativeButton: 
     altPositiveButton: 
     gravity: 3
@@ -186,7 +186,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: 
+    positiveButton: joystick 4 button 1
     altNegativeButton: 
     altPositiveButton: 
     gravity: 3
@@ -202,64 +202,64 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: 
+    positiveButton: joystick 1 button 0
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 3
-    dead: 0.03
-    sensitivity: 3
+    gravity: 1
+    dead: 0.25
+    sensitivity: 1
     snap: 0
     invert: 0
     type: 2
-    axis: 4
+    axis: 20
     joyNum: 1
   - serializedVersion: 3
     m_Name: Acc2
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: 
+    positiveButton: joystick 2 button 0
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 3
-    dead: 0.03
-    sensitivity: 3
+    gravity: 1
+    dead: 0.25
+    sensitivity: 1
     snap: 0
     invert: 0
     type: 2
-    axis: 4
+    axis: 21
     joyNum: 2
   - serializedVersion: 3
     m_Name: Acc3
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: 
+    positiveButton: joystick 3 button 0
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 3
-    dead: 0.03
-    sensitivity: 3
+    gravity: 1
+    dead: 0.25
+    sensitivity: 1
     snap: 0
     invert: 0
     type: 2
-    axis: 4
+    axis: 22
     joyNum: 3
   - serializedVersion: 3
     m_Name: Acc4
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: 
+    positiveButton: joystick 4 button 0
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 3
-    dead: 0.3
-    sensitivity: 3
+    gravity: 1
+    dead: 0.25
+    sensitivity: 1
     snap: 0
     invert: 0
     type: 2
-    axis: 4
+    axis: 23
     joyNum: 4
   - serializedVersion: 3
     m_Name: Horizontal

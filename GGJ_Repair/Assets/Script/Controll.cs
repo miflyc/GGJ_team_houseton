@@ -58,6 +58,7 @@ public class Controll : MonoBehaviour
     private LevelManager mylv;
     public float forwaittime;
     public AudioSource opaudio;
+    public AudioSource opaudioCount;
     private AudioSource myaudio;
     public AudioClip[] audioClips;
 
@@ -193,14 +194,15 @@ public class Controll : MonoBehaviour
         yield return new WaitForSeconds(3.35f);
         Debug.Log("i'm here");
         opaudio.Stop();
-        Debug.Log("play the UI of result");
+        //Debug.Log("play the UI of result");
         for (int u = 0; u < playersnum; u++)
         {
             findplayers[u].GetComponent<Player>().speed = speed;
         }
-        //myaudio.clip = audioClips[0];
-        //myaudio.loop = true;
-        //myaudio.Play();
+       // myaudio.clip = audioClips[0];
+        myaudio.loop = false;
+        myaudio.Play();
+        StartCoroutine(AudioListener1());
 
     }//timer system
 
@@ -209,7 +211,7 @@ public class Controll : MonoBehaviour
         for (int f = 0; f < playersnum; f++)
         {
 
-            playerpoint[f] = findplayers[f].GetComponent<Player>().point;
+            //playerpoint[f] = findplayers[f].GetComponent<Player>().point;
             playerrank[f] = findplayers[f].GetComponent<Player>().rank;
 
         }
@@ -224,9 +226,16 @@ public class Controll : MonoBehaviour
         }
         opaudio.loop = false;
         opaudio.Play();
-        myaudio.loop = false;
-        myaudio.Play();
+        opaudioCount.loop = false;
+        opaudioCount.Play();
         StartCoroutine(timer());  
+    }
+    IEnumerator AudioListener1()
+    {
+        yield return new WaitForSeconds(1.5f);
+        myaudio.clip = audioClips[1];
+        myaudio.loop = true;
+        myaudio.Play();
     }
     
 }

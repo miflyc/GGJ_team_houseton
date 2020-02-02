@@ -43,7 +43,7 @@ public class PlayerIns : MonoBehaviour
                 playerIn.Dbreak = mbreak;
                 playerIn.speed = speed;
                 playerIn.gameObject.tag = "Player" + (b + 1);
-                Instantiate(playerIn, position[b]);
+                Instantiate(playerIn, position[b],false);
             }
 
         }
